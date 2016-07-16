@@ -15,12 +15,8 @@ function checkNewElements(){
         for(var x = oldInjectElements; x < InjectableElements.length; x++){
             InjectableElements[x].innerHTML += aLink;
             InjectableElements[x].getElementsByTagName('a')[0].href = imgs[x].src;
-            InjectableElements[x].getElementsByTagName('a')[0].onclick = function() { showAlert(imgs[x].src); }
+            InjectableElements[x].getElementsByTagName('a')[0].onclick = function() { alert(imgs[x].src); }
         }
 
     }
-}
-
-function showAlert(x){
-  alert(x);
 }
