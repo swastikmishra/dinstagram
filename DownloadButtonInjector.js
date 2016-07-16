@@ -15,8 +15,10 @@ function checkNewElements(){
         for(var x = oldInjectElements; x < InjectableElements.length; x++){
             InjectableElements[x].innerHTML += aLink;
             InjectableElements[x].getElementsByTagName('a')[0].href = imgs[x].src;
+            console.log(InjectableElements[x].getElementsByTagName('a')[0].href);
             InjectableElements[x].getElementsByTagName('a')[0].onclick = function() { alert(imgs[x].src); }
         }
 
+        console.log(oldInjectElements + " : " + InjectableElements.length);
     }
 }
