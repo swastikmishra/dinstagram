@@ -10,14 +10,17 @@ function checkNewElements(){
 
     if(oldInjectElements < InjectableElements.length){
 
-        alert("Inserting new Elements : "+oldInjectElements+" , "+InjectableElements.length);
         var newElements = InjectableElements.length-oldInjectElements;
 
         for(var x = oldInjectElements; x < InjectableElements.length; x++){
             InjectableElements[x].innerHTML += aLink;
             InjectableElements[x].getElementsByTagName('a')[0].href = imgs[x].src;
+            InjectableElements[x].getElementsByTagName('a')[0].onclick = function() { showAlert(imgs[x].src); }
         }
 
-        alert(oldInjectElements+" , "+newElements+", "+InjectableElements.length);
     }
+}
+
+function showAlert(x){
+  alert(x);
 }
