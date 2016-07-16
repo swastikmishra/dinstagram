@@ -19,5 +19,6 @@ function checkNewElements(){
         }
 
         oldInjectElements += newElements;
+        alert(oldInjectElements+" , "+newElements+", "+InjectableElements.length);
     }
 }
