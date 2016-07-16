@@ -19,6 +19,7 @@ function checkNewElements(){
             InjectableElements[x].getElementsByTagName('a')[0].onclick = function() { alert(imgs[x].src); }
         }
 
+        oldInjectElements += newElements; 
         console.log(oldInjectElements + " : " + InjectableElements.length);
     }
 }
