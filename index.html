@@ -1,0 +1,61 @@
+<script>
+
+    var isProfile = document.getElementsByClassName('_8mlbc _vbtk2 _t5r8b').length;
+    if(isProfile == 0)
+        isProfile = false;
+    else
+        isProfile = true;
+
+    var aLink = '<a target="_new" style="background-color: #003569;color: white;padding: 10px;border-radius: 4px;;top: 20px;left: 10px;text-align: center;z-index: 999999999;position: relative;border-bottom: 1px solid #ccc;">Download</a>';
+
+    if(isProfile == false){
+
+        var aLink = '<a target="_new" style="background-color: #003569;color: white;padding: 10px;border-radius: 4px;;top: 20px;left: 10px;text-align: center;z-index: 999999999;position: relative;border-bottom: 1px solid #ccc;">Download</a>';
+        //Code For Timeline Pics
+        var oldInjectElements = 0;
+
+        setInterval(checkNewElements, 100);
+
+        function checkNewElements(){
+            var InjectableElements = document.getElementsByClassName('_jjzlb');
+            var imgs = document.getElementsByClassName('_icyx7');
+
+            if(oldInjectElements < InjectableElements.length){
+
+                alert("Inserting new Elements : "+oldInjectElements+" , "+InjectableElements.length);
+                var newElements = InjectableElements.length-oldInjectElements;
+
+                for(var x = oldInjectElements; x < InjectableElements.length; x++){
+                    InjectableElements[x].innerHTML += aLink;
+                    InjectableElements[x].getElementsByTagName('a')[0].href = imgs[x].src;
+                }
+
+                oldInjectElements += newElements;
+            }
+        }
+    }
+    else if(isProfile == true){
+        //Code For Profile Page pics
+        var clickEles = document.getElementsByClassName('_8mlbc _vbtk2 _t5r8b');
+
+        setInterval(checkNewOverlay, 10);
+
+        function checkNewOverlay(){
+            if(document.getElementsByClassName('_djxz1 _j5hrx')){
+                var divContainer = document.getElementsByClassName('_djxz1 _j5hrx');
+                var imgDiv = document.getElementsByClassName('_djxz1 _j5hrx')[0].getElementsByClassName('_jjzlb')[0];
+                var img = document.getElementsByClassName('_djxz1 _j5hrx')[0].getElementsByClassName('_icyx7')[0];
+                imgDiv.innerHTML += aLink;
+                imgDiv.getElementsByTagName('a')[0].href = img.src;
+            }
+        }
+    }
+
+    /*var imgs = document.getElementsByClassName('_icyx7');
+    var injectElements = document.getElementsByClassName('_jjzlb');
+
+    for(var x = 0; x < injectElements.length; x++){
+        injectElements[x].innerHTML += aLink;
+        injectElements[0].getElementsByTagName('a')[0].href = imgs[x].src;
+    }*/
+</script>
