@@ -63,3 +63,19 @@ function injectModalImageButton(){
 }
 
 setInterval(injectButtons, 10);
+
+function deleteAppButton(){
+  if(document.getElementsByClassName('_28zbs _nqfwp').length != 0)
+    document.getElementsByClassName('_28zbs _nqfwp')[0].remove();
+}
+
+setInterval(deleteAppButton, 10);
+deleteAppButton();
+
+function deleteDownloadAppButton(){
+  if(document.getElementsByClassName('_azlhu').length != 0)
+    document.getElementsByClassName('_azlhu')[0].remove();
+}
+
+setInterval(deleteDownloadAppButton, 10);
+deleteDownloadAppButton();
