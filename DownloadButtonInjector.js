@@ -25,13 +25,15 @@ function injectButtons(){
 }
 
 let oldInjectElements = 0;
-
+let oldVideoElements = 0;
 
 function injectTimelineButtons(){
   oldInjectElements = 0;
+  oldVideoElements = 0;
   injectTimelineButtonsClock = setInterval(function(){
     var InjectableElements = document.getElementsByClassName('_jjzlb');
-    if(oldInjectElements < InjectableElements.length)
+    var InjectableVideoElements = document.getElementsByClassName('_c8hkj');
+    if(oldInjectElements < InjectableElements.length || oldVideoElements < InjectableVideoElements.length)
       injectElements();
   }, 10);
 }
@@ -39,7 +41,7 @@ function injectTimelineButtons(){
 function injectElements(){
   var InjectableElements = document.getElementsByClassName('_jjzlb');
   var imgs = document.getElementsByClassName('_icyx7');
-  var aLink = '<a style="background: linear-gradient(to top, #4B5475 0%, rgb(102, 94, 160) 100%);color: white;padding: 10px;padding-bottom: 5px;border-radius: 4px;padding-top: 7px;text-align: center; position: relative;float: right;border-bottom: 1px solid #ccc;">Download</a>';
+  var aLink = '<a target="_blank" style="background: linear-gradient(to top, #4B5475 0%, rgb(102, 94, 160) 100%);color: white;padding: 10px;padding-bottom: 5px;border-radius: 4px;padding-top: 7px;text-align: center; position: relative;float: right;border-bottom: 1px solid #ccc;">Download</a>';
   var injectionSpots = document.getElementsByClassName('_iuf51 _oajsw');
 
       var newElements = InjectableElements.length-oldInjectElements;
@@ -50,16 +52,37 @@ function injectElements(){
       }
 
       oldInjectElements += newElements;
+
+  var InjectableVideoElements = document.getElementsByClassName('_c8hkj');
+  var aLink = '<a target="_blank" style="background: linear-gradient(to top, #4B5475 0%, rgb(102, 94, 160) 100%);color: white;padding: 10px;padding-bottom: 5px;border-radius: 4px;padding-top: 7px;text-align: center; position: relative;float: right;border-bottom: 1px solid #ccc;">Download</a>';
+  var injectionSpots = document.getElementsByClassName('_iuf51 _3sst1');
+
+    var newElements = InjectableVideoElements.length-oldVideoElements;
+
+    for(var x = oldVideoElements; x < InjectableVideoElements.length; x++){
+        injectionSpots[x].innerHTML += aLink;
+        injectionSpots[x].getElementsByTagName('a')[0].href = InjectableVideoElements[x].src;
+    }
+
+    oldVideoElements += newElements;
 }
 
 function injectModalImageButton(){
-  var InjectableElement = document.getElementsByClassName('_22yr2 _e0mru')[0];
-  var imgSrc = InjectableElement.getElementsByClassName('_icyx7')[0].src;
-  var aLink = '<a style="background: linear-gradient(to top, #4B5475 0%, rgb(102, 94, 160) 100%);color: white;padding: 10px;padding-bottom: 5px;border-radius: 4px;padding-top: 7px;text-align: center; position: relative;float: right;border-bottom: 1px solid #ccc;">Download</a>';
-  var injectionSpots = document.getElementsByClassName('_iuf51 _oajsw');
-
-          injectionSpots[0].innerHTML += aLink;
-          injectionSpots[0].getElementsByTagName('a')[0].href = imgSrc;
+  if(document.getElementsByClassName('_22yr2 _e0mru').length > 0){
+    var InjectableElement = document.getElementsByClassName('_22yr2 _e0mru')[0];
+    var imgSrc = InjectableElement.getElementsByClassName('_icyx7')[0].src;
+    var aLink = '<a target="_blank" style="background: linear-gradient(to top, #4B5475 0%, rgb(102, 94, 160) 100%);color: white;padding: 10px;padding-bottom: 5px;border-radius: 4px;padding-top: 7px;text-align: center; position: relative;float: right;border-bottom: 1px solid #ccc;">Download</a>';
+    var injectionSpots = document.getElementsByClassName('_iuf51 _oajsw');
+            injectionSpots[0].innerHTML += aLink;
+            injectionSpots[0].getElementsByTagName('a')[0].href = imgSrc;
+  }else if(document.getElementsByClassName('_c8hkj').length > 0){
+    var InjectableElement = document.getElementsByClassName('_c8hkj')[0];
+    var imgSrc = document.getElementsByClassName('_c8hkj')[0].src;
+    var aLink = '<a target="_blank" style="background: linear-gradient(to top, #4B5475 0%, rgb(102, 94, 160) 100%);color: white;padding: 10px;padding-bottom: 5px;border-radius: 4px;padding-top: 7px;text-align: center; position: relative;float: right;border-bottom: 1px solid #ccc;">Download</a>';
+    var injectionSpots = document.getElementsByClassName('_iuf51 _3sst1');
+            injectionSpots[0].innerHTML += aLink;
+            injectionSpots[0].getElementsByTagName('a')[0].href = imgSrc;
+  }
 }
 
 setInterval(injectButtons, 10);
